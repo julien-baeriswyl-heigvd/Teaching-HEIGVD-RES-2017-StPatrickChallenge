@@ -17,6 +17,7 @@ import java.io.Writer;
  * of this class via the StreamProcessorsFactory.
  * 
  * @author Olivier Liechti
+ * @author Julien Baeriswyl (MODIFIED BY)
  */
 class BasicStreamProcessor implements IStreamProcessor {
 
@@ -26,6 +27,7 @@ class BasicStreamProcessor implements IStreamProcessor {
     BufferedWriter bw = new BufferedWriter(out);
     int c = br.read();
     while (c != -1) {
+      out.write(c);
       c = br.read();
     }
     bw.flush();
