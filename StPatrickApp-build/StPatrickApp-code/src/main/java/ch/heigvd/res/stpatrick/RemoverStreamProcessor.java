@@ -7,12 +7,18 @@ import java.io.Reader;
 import java.io.Writer;
 
 /**
- * CLASS: remove 'E' and 'e' chars from input stream.
+ * CLASS: remove specified chars (by user) from input stream.
  *
  * @author Julien Baeriswyl
  * @since  2017-03-20
  */
-class ERemoverStreamProcessor implements IStreamProcessor {
+class RemoverStreamProcessor implements IStreamProcessor {
+    private String excludedChars;
+
+    public RemoverStreamProcessor(String excludedChars)
+    {
+        this.excludedChars = excludedChars;
+    }
 
     @Override
     public void process(Reader in, Writer out) throws IOException {
@@ -20,7 +26,7 @@ class ERemoverStreamProcessor implements IStreamProcessor {
         BufferedWriter bw = new BufferedWriter(out);
         int c = br.read();
         while (c != -1) {
-            if (c != 'e' & c != 'E') // check if char is different from removed ones
+            if (excludedChars.indexOf(c) == -1) // check if char is different from removed ones
             {
                 out.write(c);
             }

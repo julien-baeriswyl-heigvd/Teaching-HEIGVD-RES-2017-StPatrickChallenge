@@ -14,7 +14,17 @@ public class StreamProcessorsFactory implements IStreamProcessorsFactory {
 
   @Override
   public IStreamProcessor getProcessor(String processorName) throws UnknownNameException {
-    throw new UnknownNameException("The factory does not know any processor called " + processorName);
+    /*
+     * Factory Design Pattern allow to select and build specific instance.
+     * Therefore, I use switch-case to select right class instance according to given processor name.
+     */
+    switch(processorName)
+    {
+      case "e-remover": // used in ApplicationTest.itShouldBePossibleToGetRemoveECharactersFromAStream
+        return new RemoverStreamProcessor("Ee");
+      default:
+        throw new UnknownNameException("The factory does not know any processor called " + processorName);
+    }
   }
 
 }
