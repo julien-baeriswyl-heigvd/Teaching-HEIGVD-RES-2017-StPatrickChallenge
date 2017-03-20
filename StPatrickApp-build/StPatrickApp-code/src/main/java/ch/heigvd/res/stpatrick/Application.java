@@ -4,8 +4,10 @@ package ch.heigvd.res.stpatrick;
 import java.io.*;
 
 /**
- * 
+ * CLASS: play with Factory and Decorator design patterns ?
+ *
  * @author Olivier Liechti
+ * @author Julien Baeriswyl (MODIFIED BY)
  */
 public class Application {
 
